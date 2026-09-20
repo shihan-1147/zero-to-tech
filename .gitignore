@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# Local database and test output
+*.sqlite
+smoke-result.json
+
+# Logs
+*.log
+
+# Local tools and editor settings
+.workbuddy/
+.vscode/

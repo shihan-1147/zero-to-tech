@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 全栈开发教学示例</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- 顶栏：标题 + 后端健康状态（来自 GET /api/health） -->
+    <header class="topbar">
+      <h1>AI 全栈教学助手</h1>
+      <span id="health-badge" class="badge badge-loading">连接后端中…</span>
+    </header>
+
+    <!-- 架构链路面板：直观展示本应用各层职责与数据流向 -->
+    <details class="arch-panel" open>
+      <summary>📐 本应用的全栈架构（点击折叠）</summary>
+      <div class="arch-chain">
+        <div class="arch-node">
+          <strong>前端</strong>
+          <code>public/</code>
+          <p>原生 HTML/JS<br />fetch 调用 API</p>
+        </div>
+        <div class="arch-arrow">→ HTTP/JSON →</div>
+        <div class="arch-node">
+          <strong>路由层</strong>
+          <code>src/routes.js</code>
+          <p>参数校验<br />编排调用顺序</p>
+        </div>
+        <div class="arch-arrow">→ 调用 →</div>
+        <div class="arch-node">
+          <strong>AI 能力层</strong>
+          <code>src/ai.js</code>
+          <p>拼上下文<br />调大模型 / 模拟器</p>
+        </div>
+        <div class="arch-arrow">↕ 读写 ↕</div>
+        <div class="arch-node">
+          <strong>持久化层</strong>
+          <code>src/db.js</code>
+          <p>SQLite 存对话<br />刷新不丢失</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- 消息列表 -->
+    <main id="chat-list" class="chat-list"></main>
+
+    <!-- 输入区 -->
+    <footer class="composer">
+      <input
+        id="msg-input"
+        type="text"
+        placeholder="输入消息，回车发送 —— 试试问：什么是 REST API？"
+        maxlength="2000"
+        autocomplete="off"
+      />
+      <button id="send-btn">发送</button>
+      <button id="clear-btn" class="btn-secondary" title="清空全部对话历史">清空</button>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
